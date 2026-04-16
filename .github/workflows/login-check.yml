@@ -3,7 +3,7 @@ name: Auto Login Searchade
 on:
   workflow_dispatch: # 手动触发
   schedule:
-   - cron: '0 0 * * *' # 每3天运行一次
+   - cron: '0 0 * * *' # 每天运行一次
 
 jobs:
   auto_login:
@@ -13,6 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: 📥 拉取私库代码
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ github.repository_owner }}/searcade-login-new
+        token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+    
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
