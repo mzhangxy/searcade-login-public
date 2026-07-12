@@ -1,0 +1,1 @@
+searcade auto checkin
